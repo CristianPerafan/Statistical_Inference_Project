@@ -64,8 +64,16 @@ ConfidenceIntervalForTheMean(documentaries$Duration,0.95)
 
 
 #Hipotesis de 1 grupo
+zTestHaGreater<-function(sheet,ls,mu){
+  n<-length(sheet)
+  xbarra<-calculateMean(sheet)
+  sd <- calculateStandarDeviation(sheet) 
+  zcal <- (xbarra-mu)/(sd/sqrt(n)) 
+  zval <- calculateZValue(1-ls)
+  result <- data.frame(n,xbarra,sd,ls,zcal,zval)
+  return(result)
+}
 
-scores<-read_excel(rutaExcel,sheet = "documentaries")
-
-
+zTest(documentaries$Score,0.05,5)
   
+
