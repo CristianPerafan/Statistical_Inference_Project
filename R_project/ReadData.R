@@ -15,8 +15,8 @@ BaseDatosBuena <- read_excel(rutaExcel,sheet = "dataset")
 excel_sheets(rutaExcel)
              
 documentaries <- read_excel(rutaExcel,sheet = "documentaries")
-actionAdventure <- read_excel(rutaExcel,sheet = "actionAdventure")
-childrenFamilyMovies <- read_excel(rutaExcel,sheet = "childrenFamilyMovies")
+actionAdventure <- read_excel(rutaExcel,sheet = "ActionAndAdventure")
+childrenFamilyMovies <- read_excel(rutaExcel,sheet = "horrorMovies")
 
 # - Hallar media muestra 
 
@@ -63,10 +63,9 @@ ConfidenceIntervalForTheMean<-function(sheet,confidenceLevel){
 ConfidenceIntervalForTheMean(documentaries$Duration,0.95)
 
 
-#Nivel de confianza
-#View(documentaries)
-#View(actionAdventure)
-#View(childrenFamilyMovies)
+#Hipotesis de 1 grupo
+
+scores<-read_excel(rutaExcel,sheet = "documentaries")
 
 
   
