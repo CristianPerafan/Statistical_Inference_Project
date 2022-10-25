@@ -1,6 +1,10 @@
 
+
+
 #readxl - Este paquete nos permite leer archivos de excel
 library(readxl)
+library(tidyverse)
+library(ggplot2)
 
 #Nos permite abrir una ventana para seleccionar archivo
 rutaExcel<-file.choose()
@@ -57,13 +61,10 @@ ConfidenceIntervalForTheMean<-function(sheet,confidenceLevel){
   
 }
 
-#sample(documentaries$Duration,size = 118)
 
-ConfidenceIntervalForTheMean(documentaries$Duration,0.95)
 
 
 #Hipotesis de 1 grupo
-
 
 zTestHaGreater<-function(sheet,ls,mu){
   n<-length(sheet)
@@ -76,6 +77,24 @@ zTestHaGreater<-function(sheet,ls,mu){
   return(result)
 }
 
-zTest(documentaries$Score,0.05,5)
-  
+#Hipotesis de 2 grupos (muestras independientes)
+dataFrameH2<- read_excel(rutaExcel,sheet = "pruebasH2")
 
+#Distribución normal
+ggplot(dataFrameH2,aes(Score,fill = Genres, color = Genres))+
+  geom_density(alpha=0.1)+
+  xlim(1,10)
+
+#Gráfico de cajas
+ggplot(dataFrameH2,aes(Genres,Score,fill = Genres, color = Genres))+ 
+  geom_boxplot(alpha=0.4)+
+  theme(legend.position = "none")
+#Permite obsevar si tenemos valores atipicos 
+
+dataFrameH2 %>%
+  group_by(Genres)  %>%
+  summarize(total = n(),xbarra=mean(Score))
+
+ 
+
+t.test(Score ~ Genres,data = dataFrameH2)

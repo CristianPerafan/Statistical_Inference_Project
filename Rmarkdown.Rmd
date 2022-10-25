@@ -11,6 +11,8 @@ knitr::opts_chunk$set(echo = TRUE)
 ## **Funciones auxiliares**
 ```{R}
 library(readxl)
+library(tidyverse)
+library(ggplot2)
 
 calculateMean<-function(sheet){
   result <-mean(sheet)
@@ -142,5 +144,63 @@ zTestHaLess(documentariesForH1$Score,0.05,7.0)
 $$-1.638 \leq -1.644$$
 A un nivel de significancia del 5% no hay suficiente evidencia para aceptar $H_0$, por lo tanto, es posible afirmar que en el público de Netflix no tiene buena aceptación hacia el catálogo de documentales de la plataforma.
 
+## Hipótesis de dos grupos
+
+***Objetivo: *** Identificar si el puntaje promedio de IMDb de los 2 géneros con mayor contenido son iguales.
 
 
+Para este caso realizamos una prueba bilateral, en la cual buscamos demostrar que la media de imdb score del género Drama y la media de imdb score del género películas internacionales son diferentes.
+
+**Variables:**
+$\mu_1 : $ media imdb score peliculas drama 
+$\mu_1 : $ media imdb score peliculas internacionales
+
+**Hipótesis:**
+
+$H_0 : \mu_1 -\mu_2 = 0$ "La media imdb score de las peliculas de drama es igual a la media imdb score de las peliculas internacionales"
+
+$H_a : \mu_1 -\mu_2 \neq 0$ "La media imdb score de las peliculas de drama es diferente a la media imdb score de las peliculas internacionales"
+
+**Resolución:**
+Utilizamos la herramienta ggplot para verificar si la media del imdb score de los géneros siguen una distribución normal o aproximadamente normal:
+
+```{R}
+dataFrameH2<- read_excel(rutaExcel,sheet = "pruebasH2")
+
+ggplot(dataFrameH2,aes(Score,fill = Genres, color = Genres))+
+  geom_density(alpha=0.1)+
+  xlim(1,10)
+
+```
+
+En la gráfica es posible observar que los datos siguen una distribución aproximadamente normal.
+
+Utilizamos la gráfica para hacer una análisis grafico de los valores de la media del imdb score de cada muestra de los géneros de Drama y peliculas internacionales:
+
+```{R}
+ggplot(dataFrameH2,aes(Genres,Score,fill = Genres, color = Genres))+ 
+  geom_boxplot(alpha=0.4)
+```
+
+En la diagrama de cajas es posible observar que las medias del imdb score de los géneros difieren entre si.
+
+Determinamos si las varianzas entre los dos grupos son iguales con la pruebas $var.test()$
+
+```{R}
+var.test(Score ~ Genres,data = dataFrameH2)
+```
+
+Obtenemos un $VrP = 0.8405$ como este valor no es menor al nivel de significancia del 0.05 no rechamos la hipótesis nula. Es decir la varianza entre estos grupos es la misma.
+
+Finalmente realizamos la prueba t de studen asumiendo que las varianza son iguales:
+
+
+```{R}
+t.test(Score ~ Genres,data = dataFrameH2,var.equal= T)
+```
+
+Rechazamos $H_0:sii VrP<0.05$
+
+$0.1978 < 0.05$
+
+Con un nivel de significancia del 5% no hay suficiente evidencia para rechazar $H_0$ por lo cual decimos que las varianzas entre la media imdb score de las películas de drama es igual a la media imdb score de las peliculas internacionales
