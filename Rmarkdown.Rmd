@@ -8,6 +8,95 @@ date: "2022-10-25"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## **Funciones auxiliares**
+```{R}
+library(readxl)
+
+calculateMean<-function(sheet){
+  result <-mean(sheet)
+  return(result)
+}
+
+calculateStandarDeviation<-function(sheet){
+  result <- sd(sheet)
+  return(result)
+}
+
+calculateZValue<-function(confidenceLevel){
+  zValue<- qnorm(c(confidenceLevel),mean=0,sd=1,lower.tail=TRUE)
+  return(zValue)
+}
+
+calculateStandarError<-function(sd,n){
+  standarError <- sd/(sqrt(n))
+  return(standarError)
+}
+```
+
+## **Intervalos de confianza**
+
+Hallar los intervalos de confianza en duración  para 3 géneros. Para la resolución de este objetivo se selecciona los géneros documentales, películas de terror y acción y aventura.
+
+### ***Código***
+
+```{R}
+
+rutaExcel<-file.choose()
+
+ConfidenceIntervalForTheMean<-function(sheet,confidenceLevel){
+  
+  n <- length(sheet)
+  resultMean <- calculateMean(sheet)
+  sd <- calculateStandarDeviation(sheet) 
+  cl <- confidenceLevel*100
+  z <- calculateZValue(confidenceLevel)
+  standarError <- calculateStandarError(sd,n)
+  limInf <- resultMean-(z*standarError)
+  limSup <- resultMean+(z*standarError)
+  
+  result <- data.frame(n,resultMean,sd,cl,standarError,limInf,limSup)
+  
+  return(result)
+  
+}
+
+
+```
+
+### Documentales
+
+```{R}
+             
+documentaries <- read_excel(rutaExcel,sheet = "d118")
+ConfidenceIntervalForTheMean(documentaries$Duration,0.95)
+```
+#### análisis
+
+Con un nivel de confianza del 95% y un error estándar del 2.3 % la duración de los documentales del catálogo de películas de Netflix se encuentra entre 78.77 y 86.45 minutos.
+
+
+### Terror
+
+```{R}
+             
+horrorMovies <- read_excel(rutaExcel,sheet = "hM118")
+ConfidenceIntervalForTheMean(horrorMovies$Duration,0.95)
+```
+#### análisis
+
+Con un nivel de confianza del 95% y un error estándar del 2.3 % la duración de las peliculas de terror del catálogo de Netflix se encuentra entre 96.95 y 102.30 minutos.
+
+### Acción y aventura
+
+```{R}
+             
+actionAndAdventure <- read_excel(rutaExcel,sheet = "AA118")
+ConfidenceIntervalForTheMean(actionAndAdventure$Duration,0.95)
+```
+#### análisis
+
+Con un nivel de confianza del 95% y un error estándar del 1.6 % la duración de las peliculas de terror del catálogo de Netflix se encuentra entre 112.81 y 120.53 minutos.
+
 
 ## Hipotesis de un grupo
 
@@ -27,14 +116,7 @@ $Z_{cal}= \frac{\bar{x}-μ}{\frac{s}{\sqrt{n}}} \ge Z_{0.95}$
 
 $Z_{cal}= \frac{? - 5.0}{\frac{?}{\sqrt{118}}} \ge 1.64$
 
-# Código
 
-```{R}
-calculateZValue<-function(confidenceLevel){
-  zValue<- qnorm(c(confidenceLevel),mean=0,sd=1,lower.tail=TRUE)
-  return(zValue)
-}
-```
 
 ```{r cars}
 summary(cars)

@@ -14,9 +14,9 @@ BaseDatosBuena <- read_excel(rutaExcel,sheet = "dataset")
 #Nos devuelve las hojas de nuestro archivo
 excel_sheets(rutaExcel)
              
-documentaries <- read_excel(rutaExcel,sheet = "documentaries")
-actionAdventure <- read_excel(rutaExcel,sheet = "ActionAndAdventure")
-childrenFamilyMovies <- read_excel(rutaExcel,sheet = "horrorMovies")
+documentaries <- read_excel(rutaExcel,sheet = "d118")
+actionAdventure <- read_excel(rutaExcel,sheet = "hM118")
+childrenFamilyMovies <- read_excel(rutaExcel,sheet = "AA118")
 
 # - Hallar media muestra 
 
@@ -54,7 +54,6 @@ ConfidenceIntervalForTheMean<-function(sheet,confidenceLevel){
   result <- data.frame(n,resultMean,sd,cl,standarError,limInf,limSup)
   
   return(result)
-  
   
 }
 
