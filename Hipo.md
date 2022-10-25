@@ -1,3 +1,8 @@
+---
+output:
+  html_document: default
+  word_document: default
+---
 # Hipotesis de un grupo
 
 Se desea evaluar si el puntaje de las peliculas del catalogo de Netflix tiene en promedio una aceptacion o puntaje mayor a $5.0$ siendo la mitad del puntaje posible; siendo el maximo $10.0$ puntos. El fin de analizar si al publico le gusta el contenido que ofrece Netflix. 
@@ -5,6 +10,10 @@ Se desea evaluar si el puntaje de las peliculas del catalogo de Netflix tiene en
 Hipotesis del caso para el puntaje medio para una significancia del $5%$:
 
 $H_0$: $μ \leq 5.0$
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
 $H_a$: $μ >  5.0$
 
