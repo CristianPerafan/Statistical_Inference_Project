@@ -63,12 +63,15 @@ ConfidenceIntervalForTheMean(documentaries$Duration,0.95)
 
 
 #Hipotesis de 1 grupo
+
+
 zTestHaGreater<-function(sheet,ls,mu){
   n<-length(sheet)
   xbarra<-calculateMean(sheet)
   sd <- calculateStandarDeviation(sheet) 
   zcal <- (xbarra-mu)/(sd/sqrt(n)) 
-  zval <- calculateZValue(1-ls)
+  zval <- (calculateZValue(1-ls)*-1)
+  ho <- zcal<=zval
   result <- data.frame(n,xbarra,sd,ls,zcal,zval)
   return(result)
 }

@@ -35,7 +35,11 @@ calculateStandarError<-function(sd,n){
 
 ## **Intervalos de confianza**
 
-Hallar los intervalos de confianza en duración  para 3 géneros. Para la resolución de este objetivo se selecciona los géneros documentales, películas de terror y acción y aventura.
+***objetivo:*** Hallar los intervalos de confianza en duración  para 3 géneros. 
+
+Para la resolución de este objetivo se selecciona los géneros documentales, películas de terror y acción y aventura, además que se escoge un nivel de confianza del 95%.
+
+$$Estimador \pm (confiabilidad\cdot error\_estandar)$$
 
 ### ***Código***
 
@@ -75,6 +79,8 @@ ConfidenceIntervalForTheMean(documentaries$Duration,0.95)
 Con un nivel de confianza del 95% y un error estándar del 2.3 % la duración de los documentales del catálogo de películas de Netflix se encuentra entre 78.77 y 86.45 minutos.
 
 
+
+
 ### Terror
 
 ```{R}
@@ -99,35 +105,42 @@ Con un nivel de confianza del 95% y un error estándar del 1.6 % la duración de
 
 
 ## Hipotesis de un grupo
+A partir de la gran popularidad que ha adquirido  a lo largo de los años Netflix, se asumen que la gran mayoria de sus productos son realmente buenos, es por ello que estos deberían tener una calificación imdbScore alta. Es por ello que Se desea evaluar si el puntaje de las películas del género Documentales del catálogo de Netflix tiene en promedio una aceptación de por lo menos $7.0$; siendo el máximo $10.0$ puntos y el mínimo $1.0$. Con el fin de analizar si al público le gusta el contenido de documentales que ofrece Netflix. 
 
-Se desea evaluar si el puntaje de las peliculas del genero Documentales del catalogo de Netflix tiene en promedio una aceptacion o puntaje mayor a $5.0$ siendo la mitad del puntaje posible; siendo el maximo $10.0$ puntos. El fin de analizar si al publico le gusta el contenido que ofrece Netflix. 
+### ***Código***
+
+```{R}
+
+zTestHaLess<-function(sheet,ls,mu){
+  n<-length(sheet)
+  xbarra<-calculateMean(sheet)
+  sd <- calculateStandarDeviation(sheet) 
+  zcal <- (xbarra-mu)/(sd/sqrt(n))
+  zval <- calculateZValue(1-ls)*-1
+  result <- data.frame(n,xbarra,sd,ls,zcal,zval)
+  return(result)
+}
+```
 
 Hipotesis del caso para el puntaje medio para una significancia del $5%$:
 
-$H_0$: $μ \leq 5.0$
+$H_0$: $μ \geq 7.0$ "Los documentale de Netflix tienen buena aceptación en el publico"
 
-$H_a$: $μ >  5.0$
+$H_a$: $μ <  7.0$ "Los documentale de Netflix No tienen buena aceptación en el publico"
 
-Rechazo $H_0$ si $Z_{cal} \ge Z_{0.95}$
+Rechazo $H_0$ si $Z_{cal} \leq Z_{0.0.5}$
 
-$Z_{cal} \ge Z_{0.95}$
+$Z_{cal} \leq Z_{0.05}$
 
-$Z_{cal}= \frac{\bar{x}-μ}{\frac{s}{\sqrt{n}}} \ge Z_{0.95}$
+$Z_{cal}= \frac{\bar{x}-μ}{\frac{s}{\sqrt{n}}} \leq Z_{0.05}$
 
-$Z_{cal}= \frac{? - 5.0}{\frac{?}{\sqrt{118}}} \ge 1.64$
-
-
-
-```{r cars}
-summary(cars)
+```{R}
+documentariesForH1 <- read_excel(rutaExcel,sheet = "docuH1")
+zTestHaLess(documentariesForH1$Score,0.05,7.0)
 ```
 
-## Including Plots
+$$-1.638 \leq -1.644$$
+A un nivel de significancia del 5% no hay suficiente evidencia para aceptar $H_0$, por lo tanto, es posible afirmar que en el público de Netflix no tiene buena aceptación hacia el catálogo de documentales de la plataforma.
 
-You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
