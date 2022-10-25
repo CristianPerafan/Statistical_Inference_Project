@@ -141,7 +141,7 @@ documentariesForH1 <- read_excel(rutaExcel,sheet = "docuH1")
 zTestHaLess(documentariesForH1$Score,0.05,7.0)
 ```
 
-$$-1.638 \leq -1.644$$
+$$-1.708 \leq -1.644$$
 A un nivel de significancia del 5% no hay suficiente evidencia para aceptar $H_0$, por lo tanto, es posible afirmar que en el público de Netflix no tiene buena aceptación hacia el catálogo de documentales de la plataforma.
 
 ## Hipótesis de dos grupos
