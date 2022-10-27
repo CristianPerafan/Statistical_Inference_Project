@@ -191,7 +191,7 @@ Planteamos las hipotesis para la diferencias de varianzas.
 
 $H_o :\sigma^{2}_{1} = \sigma^{2}_{2}$
 
-$H_a :\sigma^{2}_{1} \neq \sigma^{2}_{2}  $
+$H_a :\sigma^{2}_{1} \neq \sigma^{2}_{2}$
 
 Rechazamos $H_0:sii VrP<0.05$
 
