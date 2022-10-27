@@ -105,6 +105,10 @@ ConfidenceIntervalForTheMean(actionAndAdventure$Duration,0.95)
 
 Con un nivel de confianza del 95% y un error estándar del 2.3 % la duración de las peliculas de terror del catálogo de Netflix se encuentra entre 112.81 y 120.53 minutos.
 
+***Resultados:***
+
+A partir de los resultados obtenidos de los intervalos de confianza, es posible decir que las películas del género de acción y aventura tiene mayor duración que las películas de los géneros documentales y terror.
+
 
 ## Hipotesis de un grupo
 A partir de la gran popularidad que ha adquirido  a lo largo de los años Netflix, se asumen que la gran mayoria de sus productos son realmente buenos, es por ello que estos deberían tener una calificación imdbScore alta. Es por ello que Se desea evaluar si el puntaje de las películas del género Documentales del catálogo de Netflix tiene en promedio una aceptación de por lo menos $7.0$; siendo el máximo $10.0$ puntos y el mínimo $1.0$. Con el fin de analizar si al público le gusta el contenido de documentales que ofrece Netflix. 
