@@ -156,8 +156,8 @@ A un nivel de significancia del 5% si hay suficiente evidencia para rechazar $H_
 Para este caso realizamos una prueba bilateral, en la cual buscamos demostrar que la media de imdb score del género Drama y la media de imdb score del género películas internacionales son diferentes.
 
 **Variables:**
-$\mu_1 : $ media imdb score peliculas drama 
-$\mu_1 : $ media imdb score peliculas internacionales
+$\mu_1 :$ media imdb score peliculas drama 
+$\mu_1 :$ media imdb score peliculas internacionales
 
 **Hipótesis:**
 
