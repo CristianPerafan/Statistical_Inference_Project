@@ -157,7 +157,7 @@ Para este caso realizamos una prueba bilateral, en la cual buscamos demostrar qu
 
 **Variables:**
 $\mu_1 :$ media imdb score peliculas drama 
-$\mu_1 :$ media imdb score peliculas internacionales
+$\mu_2 :$ media imdb score peliculas internacionales
 
 **Hipótesis:**
 
