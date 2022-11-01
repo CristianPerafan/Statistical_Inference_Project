@@ -50,16 +50,18 @@ ConfidenceIntervalForTheMean<-function(sheet,confidenceLevel){
   resultMean <- calculateMean(sheet)
   sd <- calculateStandarDeviation(sheet) 
   cl <- confidenceLevel*100
-  z <- calculateZValue(confidenceLevel)
+  tStudent <- qt((1-confidenceLevel)/2,n-1,lower.tail = FALSE)
   standarError <- calculateStandarError(sd,n)
-  limInf <- resultMean-(z*standarError)
-  limSup <- resultMean+(z*standarError)
+  limInf <- resultMean-(tStudent*standarError)
+  limSup <- resultMean+(tStudent*standarError)
   
   result <- data.frame(n,resultMean,sd,cl,standarError,limInf,limSup)
   
   return(result)
   
 }
+
+ConfidenceIntervalForTheMean(documentaries$Duration,0.95)
 
 
 

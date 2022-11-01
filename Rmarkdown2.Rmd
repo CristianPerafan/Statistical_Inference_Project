@@ -24,10 +24,6 @@ calculateStandarDeviation<-function(sheet){
   return(result)
 }
 
-calculateZValue<-function(confidenceLevel){
-  zValue<- qnorm(c(confidenceLevel),mean=0,sd=1,lower.tail=TRUE)
-  return(zValue)
-}
 
 calculateStandarError<-function(sd,n){
   standarError <- sd/(sqrt(n))
@@ -50,20 +46,18 @@ $$Estimador \pm (confiabilidad\cdot error\_estandar)$$
 rutaExcel<-file.choose()
 
 ConfidenceIntervalForTheMean<-function(sheet,confidenceLevel){
-  
   n <- length(sheet)
   resultMean <- calculateMean(sheet)
   sd <- calculateStandarDeviation(sheet) 
   cl <- confidenceLevel*100
-  z <- calculateZValue(confidenceLevel)
+  tStudent <- qt((1-confidenceLevel)/2,n-1,lower.tail = FALSE)
   standarError <- calculateStandarError(sd,n)
-  limInf <- resultMean-(z*standarError)
-  limSup <- resultMean+(z*standarError)
+  limInf <- resultMean-(tStudent*standarError)
+  limSup <- resultMean+(tStudent*standarError)
   
   result <- data.frame(n,resultMean,sd,cl,standarError,limInf,limSup)
   
   return(result)
-  
 }
 
 
@@ -78,7 +72,7 @@ ConfidenceIntervalForTheMean(documentaries$Duration,0.95)
 ```
 #### análisis
 
-Con un nivel de confianza del 95% y un error estándar del 2.3 % la duración de los documentales del catálogo de películas de Netflix se encuentra entre 78.77 y 86.45 minutos.
+Con un nivel de confianza del 95% la duración de los documentales del catálogo de películas de Netflix se encuentra entre 77.99 y 87.24 minutos.
 
 
 
@@ -92,7 +86,7 @@ ConfidenceIntervalForTheMean(horrorMovies$Duration,0.95)
 ```
 #### análisis
 
-Con un nivel de confianza del 95% y un error estándar del 1,6 % la duración de las peliculas de terror del catálogo de Netflix se encuentra entre 96.95 y 102.30 minutos.
+Con un nivel de confianza del 95% la duración de las peliculas de terror del catálogo de Netflix se encuentra entre 96.40 y 102.84 minutos.
 
 ### Acción y aventura
 
@@ -103,7 +97,7 @@ ConfidenceIntervalForTheMean(actionAndAdventure$Duration,0.95)
 ```
 #### análisis
 
-Con un nivel de confianza del 95% y un error estándar del 2.3 % la duración de las peliculas de terror del catálogo de Netflix se encuentra entre 112.81 y 120.53 minutos.
+Con un nivel de confianza del 95% la duración de las peliculas de terror del catálogo de Netflix se encuentra entre 112.029 y 121.327 minutos.
 
 ***Resultados:***
 
