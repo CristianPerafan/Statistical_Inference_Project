@@ -24,6 +24,11 @@ calculateStandarDeviation<-function(sheet){
   return(result)
 }
 
+calculateZValue<-function(confidenceLevel){
+  zValue<- qnorm(c(confidenceLevel),mean=0,sd=1,lower.tail=TRUE)
+  return(zValue)
+}
+
 
 calculateStandarError<-function(sd,n){
   standarError <- sd/(sqrt(n))
