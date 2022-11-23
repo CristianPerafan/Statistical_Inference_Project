@@ -228,3 +228,34 @@ Rechazamos $H_0:sii VrP<0.05$
 $0.1978 < 0.05$
 
 Con un nivel de significancia del 5% NO hay suficiente evidencia para rechazar $H_0$ por lo cual decimos que la media imdb score de las películas de drama es igual a la media imdb score de las peliculas internacionales.
+
+
+**Análisis PostAnova**
+
+|Género 1 | Género 2 | Diff    | Conclusión|Media Mayor  |
+|-------------|---------------|--------|---------------|--------------------|
+|Children & Family|Action & Adventure |-0.636|Action & Adventure> Children & Family |Action & Adventure|
+| Comedies  | Action & Adventure | -0.372| Action & Adventure>Comedies|  Action & Adventure |
+| Documentaries | Action & Adventure|0.463|Documentaries>Action & Adventure| Documentaries|
+|Dramas |Action & Adventure  | -0.27|Action & Adventure> Dramas |Action & Adventure|
+|Horror Movies |Action & Adventure  | -1.518|Action & Adventure> Horror Movies|Action & Adventure|
+| Comedies|Children & Family|-0.30909091|Children & Family>Comedies| Children & Family|
+|Documentaries |Children & Family|0.527|Documentaries> Children & Family|Documentaries|
+|Dramas |Children & Family|0.036|Dramas> Children & Family|Dramas|
+|Horror Movies|Children & Family|-1.454|Children & Family>Horror Movies| Children & Family|
+|Documentaries|Comedies|0.836|Documentaries>Comedies| Documentaries|
+|Dramas|Comedies|0.345|Dramas>Comedies| Dramas|
+|Horror movies|Comedies|-1.145|Comedies>Horror movies| Comedies|
+|Dramas|Documentaries|-0.490|Documentaries>Dramas|Documentaries|
+|Horror movies|Documentaries|-1.981|Documentaries>Horror movies|Documentaries|
+|Horror movies|Dramas|-1.490|Dramas>Horror movies|Dramas|
+
+Con base a la tabla se deduce entonces que:
+*Documentaries>Action & Adventure>Dramas>Children & Family>Comedies>Horror Movies.*
+
+**Concluyendo, se define que las producciones de tipo Documentaries tienen el mayor puntaje IMDb score promedio, mientras que  las de Horror Movies el menor puntaje IMDb promedio.**
+
+Los datos coinciden con el diagrama de cajas, ya que se puede observar como la    media del score de Documentaries es la mayor y la media de Horror movies es la menor. También gracias a los intervalos se deduce que la media con mayor diferencia entre todas es la de horror movies, mientras las demás tienen un comportamiento similar.
+
+
+
