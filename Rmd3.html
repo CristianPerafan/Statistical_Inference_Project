@@ -570,8 +570,81 @@ de Horror movies es la menor. También gracias a los intervalos se deduce
 que la media con mayor diferencia entre todas es la de horror movies,
 mientras las demás tienen un comportamiento similar.</p>
 </div>
+<div id="chi-cuadrado" class="section level2">
+<h2><strong>Chi-Cuadrado</strong></h2>
+<p>Se requiere analizar con un nivel de significancia del 5%, si existe
+una relacion entre el genero del filme y el continente donde se produjo
+este. Para ello se agruparon los datos de 3 continentes (Europa, Asia,
+America) con al menos 6 de los paises de los conforman en cada uno.
+Obteniendo de este modo la siguiente tabla.</p>
+<p><strong>Importacion de los datos en R:</strong></p>
+<pre class="r"><code>library(readxl)
+
+rutaExcel &lt;- &quot;C:/Users/Cristian Perafan/Desktop/Statistical_Inference_Project/R_project/dataSet/BaseDatosBuena.xlsx&quot;
+
+##rutaExcel &lt;- &quot;C:/Users/Acer/Documents/GEOVANNY/Universidad/CuartoSemestre/Inferencia Estadistica/projecto/Statistical_Inference_Project/R_project/dataSet/BaseDatosBuena.xlsx&quot;
+
+chiData &lt;- read_excel(rutaExcel,sheet = &quot;ChiCuadrado&quot;)
+attach(chiData)
+Europa &lt;- c(chiData[,2])
+Asia &lt;- c(chiData[,3])
+America &lt;- c(chiData[,4])
+
+table &lt;- data.frame(Europa,Asia,America)
+rownames(table) &lt;- c(&quot;Action &amp; Adventure&quot;,&quot;Anime&quot;,&quot;Children &amp; Family&quot;,&quot;Classic Movies&quot;,&quot;Comedies&quot;,&quot;Cult Movies&quot;,&quot;Documentaries&quot;,&quot;Dramas&quot;,&quot;Horror&quot;,&quot;Independent Movies&quot;,&quot;International Movies&quot;,&quot;LGBTQ Movies&quot;,&quot;Music &amp; Musicals&quot;,&quot;Romantic Movies&quot;,&quot;Sci-Fi &amp; Fantasy&quot;,&quot;Stand-Up Comedy&quot;,&quot;Thrillers&quot;,&quot;Faith &amp; Spirituality&quot;,&quot;Sports Movies&quot;)
+View(table)
+print(table)</code></pre>
+<pre><code>##                      Europa Asia America
+## Action &amp; Adventure       65  194     215
+## Anime                     0   51       5
+## Children &amp; Family        54   59     266
+## Classic Movies            6    4      15
+## Comedies                129  288     473
+## Cult Movies               8    5      21
+## Documentaries            93   19     319
+## Dramas                  241  535     568
+## Horror                   30   39     119
+## Independent Movies       71  113     252
+## International Movies    301  760     272
+## LGBTQ Movies              6    3      48
+## Music &amp; Musicals         33   70     111
+## Romantic Movies          40  114     158
+## Sci-Fi &amp; Fantasy         31   30     103
+## Stand-Up Comedy          32    7     240
+## Thrillers                84   80     184
+## Faith &amp; Spirituality      3    5      20
+## Sports Movies            17   14      67</code></pre>
+<p>Con ellos es posible plantear las hipotesis que responden a la
+pregunta: <strong>¿El continente donde se produce un filme, está
+relacionado con su genero?</strong></p>
+<p><span class="math inline">\(H_0\)</span>: “No hay relacion entre el
+genero de un filme y el pais donde se produce”</p>
+<p><span class="math inline">\(H_a\)</span>: “Hay relacion entre el
+genero de un filme y el pais donde se produce”</p>
+<p><strong>Criterio de rechazo:</strong></p>
+<p>Rechazo <span class="math inline">\(H_0\)</span> Si <span class="math inline">\(VrP &lt; \alpha\)</span></p>
+<p><strong>Implementacion en R:</strong></p>
+<pre class="r"><code>chiTest &lt;- chisq.test(table,correct=FALSE)
+chiTest</code></pre>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  table
+## X-squared = 1138.4, df = 36, p-value &lt; 2.2e-16</code></pre>
+<p><strong>Análisis de resultados: </strong></p>
+<p>Del anterior resumen generado por R se obtiene <span class="math inline">\(VrP\)</span>, ahora se evalua <span class="math inline">\(VrP\)</span> en el criterio de rechazo:</p>
+<p><span class="math display">\[0.00000000000000022&lt;
+0.05\]</span></p>
+<p>Con un nivel de significancia de 5%, hay suficiente evidencia para
+rechazar <span class="math inline">\(H_0\)</span>, por lo tanto, hay
+relacion entre el genero de un filme y el pais que lo produce.</p>
+</div>
 <div id="regresión-lineal" class="section level2">
 <h2><strong>Regresión lineal</strong></h2>
+<p>Se desea estudiar la relación que existe entre la duración y el score
+del producto audiovisual en la plataforma Netflix, específicamente para
+el género horror, para ello se selecciona una muestra de 118 productos
+audiovisuales del género documentales.</p>
 <p><strong>Definición modelo de regresión</strong></p>
 <p>Modelo regresión lineal simple: <span class="math display">\[\widehat{y} = \beta_0 + \beta_1 x\]</span>
 Donde</p>
@@ -609,6 +682,83 @@ summary(model)</code></pre>
 ## Residual standard error: 23.43 on 116 degrees of freedom
 ## Multiple R-squared:  0.1542, Adjusted R-squared:  0.1469 
 ## F-statistic: 21.15 on 1 and 116 DF,  p-value: 1.089e-05</code></pre>
+<p><strong>Modelo de estimación</strong></p>
+<p>A partir del dataframe obtenido con ayuda de R, podemos establecer el
+modelo de estimación:</p>
+<p><span class="math inline">\(\beta_0 = 5.9105\)</span> <span class="math inline">\(\beta_q = 0.0127\)</span></p>
+<p><span class="math display">\[\widehat{y} = 5.9105 + 0.0127x\]</span>
+<strong>Test de correlación</strong></p>
+<pre class="r"><code>with(regresionData, cor.test(DURACION, SCORE, alternative=&quot;two.sided&quot;, method=&quot;pearson&quot;))</code></pre>
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  DURACION and SCORE
+## t = 4.5993, df = 116, p-value = 1.089e-05
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.2281638 0.5354728
+## sample estimates:
+##       cor 
+## 0.3927261</code></pre>
+<p><strong>Validación de supuestos</strong></p>
+<p>Para realizar la validación de los supuesto de normalidad y varianza
+constante (homocedasticidad) primero obtenemos los residuos en R:</p>
+<pre class="r"><code>library(zoo)
+library(lmtest)
+library(nortest)
+
+residuals&lt;- within(regresionData, {
+  residuals.model &lt;- residuals(model) 
+})</code></pre>
+<p><strong><em>Normalidad</em></strong></p>
+<p>Definición de hipótesis:</p>
+<p><span class="math inline">\(H_0 :\)</span> “Los residuos se
+distribuyen de forma normal” <span class="math inline">\(H_a :\)</span>
+“Los residuos NO se distribuyen de formal normal”</p>
+<p>Criterio de rechazo:</p>
+<p>Rechazo <span class="math inline">\(H_o\)</span> sii <span class="math inline">\(Vrp&lt;\alpha\)</span></p>
+<p>Realizamos el Lilliefors (Kolmogorov-Smirnov) normality test:</p>
+<pre class="r"><code>residuos &lt;- residuals(model)
+
+lillie.test(residuos)</code></pre>
+<pre><code>## 
+##  Lilliefors (Kolmogorov-Smirnov) normality test
+## 
+## data:  residuos
+## D = 0.089736, p-value = 0.02069</code></pre>
+<p>Del anterior resultado VrP que obtuvimos en R evaluamos en nuestro
+criterio de rechazo:</p>
+<p><span class="math display">\[0.5253 &lt; 0.05\]</span></p>
+<p>A un nivel de significancia del 5% hay suficiente evidencia para
+rechazar Ho por lo tanto se cumple que los residuos se comportan de
+forma normal y se valida el supuesto de normalidad.</p>
+<p><strong><em>Varianza constante</em></strong></p>
+<p>Definición de hipótesis:</p>
+<p><span class="math inline">\(H_0 :\)</span> “Los residuos presentan
+varianza constante (Homocedasticidad)”</p>
+<p><span class="math inline">\(H_a :\)</span> “Los residuos NO presentan
+varianza constante (Heterocedasticidad)”</p>
+<p>Criterio de rechazo:</p>
+<p>Rechazo <span class="math inline">\(H_o\)</span> sii <span class="math inline">\(Vrp&lt;\alpha\)</span></p>
+<p>Realizamos el Breusch-Pagan test con R e imprimimos resultado :</p>
+<pre class="r"><code>bptest(SCORE ~ DURACION, varformula = ~ fitted.values(model), studentize=FALSE, data=residuals)</code></pre>
+<pre><code>## 
+##  Breusch-Pagan test
+## 
+## data:  SCORE ~ DURACION
+## BP = 8.9766, df = 1, p-value = 0.002735</code></pre>
+<p>Evaluamos los resultados: <span class="math inline">\(0.6087 &lt;
+0.05\)</span></p>
+<p>A un nivel de significancia del 5% no hay suficiente evidencia para
+rechazar Ho por lo tanto se cumple que los residuos presentan una
+varianza constante(Homocedasticidad) y se valida el supuesto de
+homocedasticidad.</p>
+<p><strong><em>Linealidad</em></strong></p>
+<p>Definición de hipótesis:</p>
+<p><span class="math inline">\(H_o:\)</span> Los residuos NO se
+comportan de forma lineal</p>
+<p><span class="math inline">\(H_a:\)</span> Los residuos se comportan
+de forma lineal</p>
 </div>
 
 

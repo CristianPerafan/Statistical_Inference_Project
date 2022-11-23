@@ -117,9 +117,9 @@ Se requiere analizar con un nivel de significancia del 5%, si existe una relacio
 ```{R}
 library(readxl)
 
-##rutaExcel <- "C:/Users/Cristian Perafan/Desktop/Statistical_Inference_Project/R_project/dataSet/BaseDatosBuena.xlsx"
+rutaExcel <- "C:/Users/Cristian Perafan/Desktop/Statistical_Inference_Project/R_project/dataSet/BaseDatosBuena.xlsx"
 
-rutaExcel <- "C:/Users/Acer/Documents/GEOVANNY/Universidad/CuartoSemestre/Inferencia Estadistica/projecto/Statistical_Inference_Project/R_project/dataSet/BaseDatosBuena.xlsx"
+##rutaExcel <- "C:/Users/Acer/Documents/GEOVANNY/Universidad/CuartoSemestre/Inferencia Estadistica/projecto/Statistical_Inference_Project/R_project/dataSet/BaseDatosBuena.xlsx"
 
 chiData <- read_excel(rutaExcel,sheet = "ChiCuadrado")
 attach(chiData)
@@ -159,6 +159,8 @@ Con un nivel de significancia de 5%, hay suficiente evidencia para rechazar $H_0
 
 ## **Regresión lineal**
 
+Se desea estudiar la relación que existe entre la duración y el score del producto audiovisual en la plataforma Netflix, específicamente para el género horror, para ello se selecciona una muestra de 118 productos audiovisuales del género documentales.
+
 **Definición modelo de regresión**
 
 Modelo regresión lineal simple: 
@@ -184,3 +186,87 @@ model  = lm(SCORE~DURACION,data = regresionData)
 
 summary(model)
 ```
+
+**Modelo de estimación**
+
+A partir del dataframe obtenido con ayuda de R, podemos establecer el modelo de estimación:
+
+$\beta_0 = 5.9105$
+$\beta_q = 0.0127$
+
+
+$$\widehat{y} = 5.9105 + 0.0127x$$
+**Test de correlación**
+```{R}
+with(regresionData, cor.test(DURACION, SCORE, alternative="two.sided", method="pearson"))
+```
+**Validación de supuestos**
+
+Para realizar la validación de los supuesto de normalidad y varianza constante (homocedasticidad) primero obtenemos los residuos en R:
+
+```{R}
+library(zoo)
+library(lmtest)
+library(nortest)
+
+residuals<- within(regresionData, {
+  residuals.model <- residuals(model) 
+})
+```
+***Normalidad***
+
+Definición de hipótesis:
+
+$H_0 :$ "Los residuos se distribuyen de forma normal"
+$H_a :$ "Los residuos NO se distribuyen de formal normal"
+
+Criterio de rechazo:
+
+Rechazo $H_o$ sii $Vrp<\alpha$
+
+Realizamos el Lilliefors (Kolmogorov-Smirnov) normality test:
+
+```{R}
+residuos <- residuals(model)
+
+lillie.test(residuos)
+
+```
+
+Del anterior resultado VrP que obtuvimos en R evaluamos en nuestro criterio de rechazo:
+
+$$0.5253 < 0.05$$ 
+
+A un nivel de significancia del 5%  hay suficiente evidencia para rechazar Ho por lo tanto se cumple  que los residuos se comportan de forma normal y se valida el supuesto de normalidad.
+
+***Varianza constante***
+
+Definición de hipótesis:
+
+$H_0 :$ "Los residuos presentan varianza constante (Homocedasticidad)"
+
+$H_a :$ "Los residuos NO presentan varianza constante (Heterocedasticidad)"
+
+Criterio de rechazo:
+
+Rechazo $H_o$ sii $Vrp<\alpha$
+
+Realizamos el Breusch-Pagan test con R e imprimimos resultado :
+
+```{R}
+bptest(SCORE ~ DURACION, varformula = ~ fitted.values(model), studentize=FALSE, data=residuals)
+
+```
+
+Evaluamos los resultados: 
+$0.6087 < 0.05$
+
+A un nivel de significancia del 5% no hay suficiente evidencia para rechazar Ho por lo tanto se cumple  que los residuos presentan una varianza constante(Homocedasticidad) y se valida el supuesto de homocedasticidad.
+
+***Linealidad***
+
+Definición de hipótesis:
+
+$H_o:$ Los residuos NO se comportan de forma lineal
+
+$H_a:$ Los residuos se comportan de forma lineal
