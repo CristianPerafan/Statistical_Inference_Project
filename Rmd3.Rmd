@@ -108,3 +108,31 @@ Con base a la tabla se deduce entonces que:
 **Concluyendo, se define que las producciones de tipo Documentaries tienen el mayor puntaje IMDb score promedio, mientras que  las de Horror Movies el menor puntaje IMDb promedio.**
 
 *Los datos coinciden con el diagrama de cajas, ya que se puede observar como la    media del score de Documentaries es la mayor y la media de Horror movies es la menor. También gracias a los intervalos se deduce que la media con mayor diferencia entre todas es la de horror movies, mientras las demás tienen un comportamiento similar.
+
+## **Regresión lineal**
+
+**Definición modelo de regresión**
+
+Modelo regresión lineal simple: 
+$$\widehat{y} = \beta_0 + \beta_1 x$$
+Donde
+
+$\beta_0 :$ "Intercepto de la recta"
+
+$\beta_1 :$ "Pendiente de la recta"
+
+**Definición de variables**
+
+La variable dependendiente es el score y la variable independiente es la duración.
+
+**Implementación en R**
+```{R}
+library(readxl)
+library(QuantPsyc)
+
+regresionData<- read_excel(rutaExcel,sheet = "regresion")
+
+model  = lm(SCORE~DURACION,data = regresionData)
+
+summary(model)
+```
