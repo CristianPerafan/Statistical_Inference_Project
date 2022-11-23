@@ -270,3 +270,20 @@ Definición de hipótesis:
 $H_o:$ Los residuos NO se comportan de forma lineal
 
 $H_a:$ Los residuos se comportan de forma lineal
+
+```{R}
+
+fm = aov(lm(SCORE~DURACION,data = regresionData) )
+
+summary(fm)
+```
+Criterio de rechazo:
+
+Rechazo $H_o$ sii $Vrp<\alpha$
+
+Evaluamos los resultados: 
+1.09e-05
+$$0.0000109 < 0.05$$
+se cumple la desigualdad, por lo tanto, a un nivel de significancia del 5% hay suficiente evidencia para rechazar Ho, es decir que los residuos se comportan de forma lineal y se valida el supuesto de linealidad.
+
+

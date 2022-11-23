@@ -759,6 +759,20 @@ homocedasticidad.</p>
 comportan de forma lineal</p>
 <p><span class="math inline">\(H_a:\)</span> Los residuos se comportan
 de forma lineal</p>
+<pre class="r"><code>fm = aov(lm(SCORE~DURACION,data = regresionData) )
+
+summary(fm)</code></pre>
+<pre><code>##              Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+## DURACION      1  11617   11617   21.15 1.09e-05 ***
+## Residuals   116  63701     549                     
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Criterio de rechazo:</p>
+<p>Rechazo <span class="math inline">\(H_o\)</span> sii <span class="math inline">\(Vrp&lt;\alpha\)</span></p>
+<p>Evaluamos los resultados: 1.09e-05 <span class="math display">\[0.0000109 &lt; 0.05\]</span> se cumple la
+desigualdad, por lo tanto, a un nivel de significancia del 5% hay
+suficiente evidencia para rechazar Ho, es decir que los residuos se
+comportan de forma lineal y se valida el supuesto de linealidad.</p>
 </div>
 
 
