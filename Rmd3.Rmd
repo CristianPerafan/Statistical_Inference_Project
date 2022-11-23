@@ -109,35 +109,6 @@ Con base a la tabla se deduce entonces que:
 
 *Los datos coinciden con el diagrama de cajas, ya que se puede observar como la    media del score de Documentaries es la mayor y la media de Horror movies es la menor. También gracias a los intervalos se deduce que la media con mayor diferencia entre todas es la de horror movies, mientras las demás tienen un comportamiento similar.
 
-## **Regresión lineal**
-
-**Definición modelo de regresión**
-
-Modelo regresión lineal simple: 
-$$\widehat{y} = \beta_0 + \beta_1 x$$
-Donde
-
-$\beta_0 :$ "Intercepto de la recta"
-
-$\beta_1 :$ "Pendiente de la recta"
-
-**Definición de variables**
-
-La variable dependendiente es el score y la variable independiente es la duración.
-
-**Implementación en R**
-```{R}
-library(readxl)
-library(QuantPsyc)
-
-regresionData<- read_excel(rutaExcel,sheet = "regresion")
-
-model  = lm(SCORE~DURACION,data = regresionData)
-
-summary(model)
-```
-
-
 ## **Chi-Cuadrado**
 
 Se requiere analizar con un nivel de significancia del 5%, si existe una relacion entre el genero del filme y el continente donde se produjo este. Para ello se agruparon los datos de 3 continentes (Europa, Asia, America) con al menos 6 de los paises de los conforman en cada uno. Obteniendo de este modo la siguiente tabla.
@@ -185,3 +156,31 @@ Del anterior resumen generado por R se obtiene $VrP$, ahora se evalua $VrP$ en e
 $$0.00000000000000022< 0.05$$ 
 
 Con un nivel de significancia de 5%, hay suficiente evidencia para rechazar $H_0$, por lo tanto, hay relacion entre el genero de un filme y el pais que lo produce.
+
+## **Regresión lineal**
+
+**Definición modelo de regresión**
+
+Modelo regresión lineal simple: 
+$$\widehat{y} = \beta_0 + \beta_1 x$$
+Donde
+
+$\beta_0 :$ "Intercepto de la recta"
+
+$\beta_1 :$ "Pendiente de la recta"
+
+**Definición de variables**
+
+La variable dependendiente es el score y la variable independiente es la duración.
+
+**Implementación en R**
+```{R}
+library(readxl)
+library(QuantPsyc)
+
+regresionData<- read_excel(rutaExcel,sheet = "regresion")
+
+model  = lm(SCORE~DURACION,data = regresionData)
+
+summary(model)
+```
