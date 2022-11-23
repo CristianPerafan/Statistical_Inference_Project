@@ -64,6 +64,13 @@ $$0.0000062< 0.05$$
 
 Con un nivel de significancia de 5%, hay suficiente evidencia para rechazar la HO, por lo tanto existe por lo menos una diferencia entre el score de un par de generos.
 
+**Diagrama de cajas**
+
+```{R}
+boxplot(Score~Genres)
+
+```
+
 **Post Anova**
 
 ```{R}
