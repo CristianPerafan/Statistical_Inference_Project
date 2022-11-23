@@ -1,0 +1,76 @@
+---
+title: "PROYECTO INFERENCIA ESTADISTICA"
+output: html_document
+date: "Diana Balanta-Danna Espinosa-Cristian Perafan-Geovanny Quintero"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+
+```
+
+## **Anova**
+
+
+**Definición de variables:**
+
+$\mu_1 =$ "score de los productos audiovisuales del género acción y aventura"
+
+$\mu_2 =$ "score de los productos audiovisuales del género niños y peliculas familiares"
+
+$\mu_3 =$ "score de los productos audiovisuales del género comedia"
+
+$\mu_4 =$ "score de los productos audiovisuales del género documentales"
+
+$\mu_5 =$ "score de los productos audiovisuales del género dramas"
+
+$\mu_5 =$ "score de los productos audiovisuales del género peliculas de horror"
+
+**Planteamiento de hipótesis**
+
+$H_0$: $\mu_1 = \mu_2 = \mu_3 = \mu_4 = \mu_5 = \mu_6$ ""No existe diferencia entre la media de los score de los diferentes géneros"
+
+$H_a$: "Por lo menos un par de medias de los scores de los géneros son diferentes"
+
+
+**Criterio de rechazo:**
+
+Rechazo $H_0$ SII $VrP < \alpha$
+
+**Implementación en R:**
+
+```{R}
+
+library(readxl)
+library(rapportools)
+
+
+rutaExcel <- "C:/Users/Cristian Perafan/Desktop/Statistical_Inference_Project/R_project/dataSet/BaseDatosBuena.xlsx"
+
+anovaData <- read_excel(rutaExcel,sheet = "Anova")
+
+attach(anovaData)
+
+anova <- aov(Score~Genres)
+summary(anova)
+
+
+```
+**Análisis de resultados: **
+
+Del anterior resumen generado por R podemos obtener $VrP$, evaluamos el $VrP$ en nuestro criterio de rechazo:
+
+$$0.0000062< 0.05$$ 
+
+Con un nivel de significancia de 5%, hay suficiente evidencia para rechazar la HO, por lo tanto existe por lo menos una diferencia entre el score de un par de generos.
+
+**Post Anova**
+
+```{R}
+TukeyHSD(anova)
+
+```
+**Gráfico de diferencias**
+```{R}
+plot(TukeyHSD(anova))
+```
