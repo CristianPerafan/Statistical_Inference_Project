@@ -117,7 +117,7 @@ Se requiere analizar con un nivel de significancia del 5%, si existe una relacio
 ```{R}
 library(readxl)
 
-rutaExcel<-file.choose()
+##rutaExcel<-file.choose()
 ##rutaExcel <- "C:/Users/Acer/Documents/GEOVANNY/Universidad/CuartoSemestre/Inferencia Estadistica/projecto/Statistical_Inference_Project/R_project/dataSet/BaseDatosBuena.xlsx"
 
 chiData <- read_excel(rutaExcel,sheet = "ChiCuadrado")
