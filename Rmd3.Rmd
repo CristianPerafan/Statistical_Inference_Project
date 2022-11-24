@@ -1,5 +1,5 @@
 ---
-title: "PROYECTO INFERENCIA ESTADISTICA"
+title: "PROYECTO INFERENCIA ESTADISTICA-NETFLIX"
 output: html_document
 date: "Diana Balanta-Danna Espinosa-Cristian Perafan-Geovanny Quintero"
 ---
@@ -8,9 +8,14 @@ date: "Diana Balanta-Danna Espinosa-Cristian Perafan-Geovanny Quintero"
 knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
 
 ```
+# **Objetivo 04.**
+
+
+## **Identificar entre 6 géneros cuál tiene el mayor puntaje IMDb score promedio. **
+
+**Generos:** Acción y aventura, niños y peliculas familiares, comedia,documentales,drama, horror.
 
 ## **Anova**
-
 
 **Definición de variables:**
 
@@ -64,12 +69,6 @@ $$0.0000062< 0.05$$
 
 Con un nivel de significancia de 5%, hay suficiente evidencia para rechazar la HO, por lo tanto existe por lo menos una diferencia entre el score de un par de generos.
 
-**Diagrama de cajas**
-
-```{R}
-boxplot(Score~Genres)
-
-```
 
 **Post Anova**
 
@@ -107,7 +106,19 @@ Con base a la tabla se deduce entonces que:
 
 **Concluyendo, se define que las producciones de tipo Documentaries tienen el mayor puntaje IMDb score promedio, mientras que  las de Horror Movies el menor puntaje IMDb promedio.**
 
-*Los datos coinciden con el diagrama de cajas, ya que se puede observar como la    media del score de Documentaries es la mayor y la media de Horror movies es la menor. También gracias a los intervalos se deduce que la media con mayor diferencia entre todas es la de horror movies, mientras las demás tienen un comportamiento similar.
+**Diagrama de cajas**
+
+```{R}
+boxplot(Score~Genres)
+
+```
+
+Los datos coinciden con el diagrama de cajas, ya que se puede observar como la    media del score de Documentaries es la mayor y la media de Horror movies es la menor. También gracias a los intervalos se deduce que la media con mayor diferencia entre todas es la de horror movies, mientras las demás tienen un comportamiento similar.
+
+# **Objetivo 05**
+
+
+## **Conocer si existe relación entre el género de la película y el continente donde se produjo. (Prueba  de independencia)**
 
 ## **Chi-Cuadrado**
 
@@ -155,6 +166,10 @@ Del anterior resumen generado por R se obtiene $VrP$, ahora se evalua $VrP$ en e
 $$0.00000000000000022< 0.05$$ 
 
 Con un nivel de significancia de 5%, hay suficiente evidencia para rechazar $H_0$, por lo tanto, hay relacion entre el genero de un filme y el continente que lo produce.
+
+# **Objetivo 06**
+
+## **Establecer el tipo de relación que hay entre la duración de las peliculas y el IMDb Score**
 
 ## **Regresión lineal**
 
