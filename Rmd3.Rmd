@@ -115,7 +115,7 @@ boxplot(Score~Genres)
 
 ```
 
-Los datos coinciden con el diagrama de cajas, ya que se puede observar como la    media del score de Documentaries es la mayor y la media de Horror movies es la menor. También gracias a los intervalos se deduce que la media con mayor diferencia entre todas es la de horror movies, mientras las demás tienen un comportamiento similar.
+Los datos coinciden con el diagrama de cajas, ya que se puede observar como la mediana del score de Documentaries es la mayor y la media de Horror movies es la menor. También gracias a los intervalos se deduce que la media con mayor diferencia entre todas es la de horror movies, mientras las demás tienen un comportamiento similar.
 
 # **Objetivo 05**
 
@@ -258,7 +258,7 @@ Para $R^2$ tenemos **tres interpretaciones**, nuestra primera interpretación es
 |0.9 $<$ $R^2$ $\leq$ 1.0 | EXCELENTE |ES CONFIABLE PARA HACER ESTIMACIONES|
 
 **Primera Interpretación**
-El modelo propuesto explica el 19.51% de la variabilidad del score que toma las películas del género documental.
+El modelo propuesto explica el 19.51% de la variabilidad del score que toma las películas del género horror.
 
 **Segunda Interpretación**
 El modelo propuesto presenta una bondad de ajuste considerada mala
@@ -343,7 +343,7 @@ Del anterior resultado VrP que obtuvimos en R evaluamos en nuestro criterio de r
 
 $$0.5253 < 0.05$$ 
 
-A un nivel de significancia del 5%  hay suficiente evidencia para rechazar Ho por lo tanto se cumple  que los residuos se comportan de forma normal y se valida el supuesto de normalidad.
+A un nivel de significancia del 5% no hay suficiente evidencia para rechazar Ho por lo tanto se cumple  que los residuos se comportan de forma normal y se valida el supuesto de normalidad.
 
 ***Varianza constante***
 
@@ -388,8 +388,8 @@ Criterio de rechazo:
 Rechazo $H_o$ sii $Vrp<\alpha$
 
 Evaluamos los resultados: 
-1.09e-05
-$$0.0000109 < 0.05$$
+3.33e-08 
+$$0.00000003.33 < 0.05$$
 se cumple la desigualdad, por lo tanto, a un nivel de significancia del 5% hay suficiente evidencia para rechazar Ho, es decir que los residuos se comportan de forma lineal y se valida el supuesto de linealidad.
 
 
