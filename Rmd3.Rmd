@@ -134,9 +134,9 @@ print(table)
 
 Con ellos es posible plantear las hipotesis que responden a la pregunta: **¿El continente donde se produce un filme, está relacionado con su genero?**
 
-$H_0$: "No hay relacion entre el genero de un filme y el pais donde se produce"
+$H_0$: "No hay relacion entre el genero de un filme y el continente donde se produce"
 
-$H_a$: "Hay relacion entre el genero de un filme y el pais donde se produce"
+$H_a$: "Hay relacion entre el genero de un filme y el pais continente se produce"
 
 **Criterio de rechazo:**
 
@@ -154,7 +154,7 @@ Del anterior resumen generado por R se obtiene $VrP$, ahora se evalua $VrP$ en e
 
 $$0.00000000000000022< 0.05$$ 
 
-Con un nivel de significancia de 5%, hay suficiente evidencia para rechazar $H_0$, por lo tanto, hay relacion entre el genero de un filme y el pais que lo produce.
+Con un nivel de significancia de 5%, hay suficiente evidencia para rechazar $H_0$, por lo tanto, hay relacion entre el genero de un filme y el continente que lo produce.
 
 ## **Regresión lineal**
 
