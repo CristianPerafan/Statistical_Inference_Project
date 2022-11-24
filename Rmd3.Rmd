@@ -210,10 +210,6 @@ $\beta_q = 0.028803$
 
 
 $$\widehat{y} =2.385943 + 0.028803x$$
-**Test de correlación**
-```{R}
-with(regresionData, cor.test(DURACION, SCORE, alternative="two.sided", method="pearson"))
-```
 
 **Interpretación $B_1$, $R^2$, $r$**
 
@@ -246,6 +242,12 @@ El modelo propuesto presenta una bondad de ajuste considerada mala
 	
 **Tercera Interpretación**
 Por lo tanto, este modelo no es confiable para hacer estimaciones.
+
+**Test de correlación**
+```{R}
+with(regresionData, cor.test(DURACION, SCORE, alternative="two.sided", method="pearson"))
+```
+
 
 **Interpretación $r$**
 

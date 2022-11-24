@@ -715,19 +715,7 @@ summary(model)</code></pre>
 modelo de estimación:</p>
 <p><span class="math inline">\(\beta_0 = 2.385943\)</span> <span class="math inline">\(\beta_q = 0.028803\)</span></p>
 <p><span class="math display">\[\widehat{y} =2.385943 +
-0.028803x\]</span> <strong>Test de correlación</strong></p>
-<pre class="r"><code>with(regresionData, cor.test(DURACION, SCORE, alternative=&quot;two.sided&quot;, method=&quot;pearson&quot;))</code></pre>
-<pre><code>## 
-##  Pearson&#39;s product-moment correlation
-## 
-## data:  DURACION and SCORE
-## t = 4.5993, df = 116, p-value = 1.089e-05
-## alternative hypothesis: true correlation is not equal to 0
-## 95 percent confidence interval:
-##  0.2281638 0.5354728
-## sample estimates:
-##       cor 
-## 0.3927261</code></pre>
+0.028803x\]</span></p>
 <p><strong>Interpretación <span class="math inline">\(B_1\)</span>,
 <span class="math inline">\(R^2\)</span>, <span class="math inline">\(r\)</span></strong></p>
 <p><strong>Interpretación <span class="math inline">\(B_1\)</span></strong> <span class="math inline">\(B_1=0.028803\)</span></p>
@@ -791,6 +779,19 @@ las películas del género documental.</p>
 una bondad de ajuste considerada mala</p>
 <p><strong>Tercera Interpretación</strong> Por lo tanto, este modelo no
 es confiable para hacer estimaciones.</p>
+<p><strong>Test de correlación</strong></p>
+<pre class="r"><code>with(regresionData, cor.test(DURACION, SCORE, alternative=&quot;two.sided&quot;, method=&quot;pearson&quot;))</code></pre>
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  DURACION and SCORE
+## t = 4.5993, df = 116, p-value = 1.089e-05
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.2281638 0.5354728
+## sample estimates:
+##       cor 
+## 0.3927261</code></pre>
 <p><strong>Interpretación <span class="math inline">\(r\)</span></strong></p>
 <p><span class="math inline">\(r=0.4417563\)</span></p>
 <p>Ahora encontramos que el coeficiente de correlación de Pearson es
