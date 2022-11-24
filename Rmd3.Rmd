@@ -17,6 +17,8 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 
 ## **Anova**
 
+
+var.test(Score ~ Genres,data = dataFrameH2)
 **Definición de variables:**
 
 $\mu_1 =$ "score de los productos audiovisuales del género acción y aventura"
@@ -215,12 +217,10 @@ $$\widehat{y} =2.385943 + 0.028803x$$
 
 $B_0= 2.385$
 
-Si no hay un incremento en la duración de las películas el score en promedio sera 2,3.
-
-Con conociendo $Vrp$ tambien es posible determinar si el modelo tiene su intercepto en el origen. Para ello planteamos las hipotesis:
 
 $H_0$: $B_0 = 0$ El modelo pasa por el origen.
-$H_$a: $B_0 ≠ 0$ El modelo no pasa por el origen.
+
+$H_a$: $B_0 ≠ 0$ El modelo no pasa por el origen.
 
 **Criterio de rechazo:**
 
@@ -228,7 +228,12 @@ Se rechaza $H_o$ Si: $VrP<\alpha$
 
 $0.00000386<0.05$
 
+
+Con conociendo $Vrp$ tambien es posible determinar si el modelo tiene su intercepto en el origen. Para ello planteamos las hipotesis:
+
 Por lo que con un nivel de significancia del $5%$, se rechaza $H_0$. Por tanto el modelo no pasa por el origen.
+
+Si no hay un incremento en la duración de las películas el score en promedio sera 2,3.
 
 **Interpretación $\beta_1$**
 
@@ -283,12 +288,14 @@ La segunda interpretación es respecto a la siguiente tabla:
 |0.3 $<$ $r$ $\leq$ 0.5| MODERADA|
 |0.5 $<$ $r$ $\leq$ 0.75| FUERTE |
 |0.75 $<$ $r$ $\leq$ 1.0| MUY FUERTE|
+
 De la tabla se infiere que la relación entre Duración y Score IMDb es MODERADA ya que el coeficiente de correlación $r=0.4417563$  se encuentra dentro del rango 0.3 $<$ $r$ $\leq$ 0.5 .
 
 
 Por ultimo, podemos determinar mediante el $Vrp$ del test de correlación de pearson si hay relacion entre la variable dependiente y la independiente, es decir si hay relacion entre la duración y el puntaje. Para ello se plantean las siguientes hipotesis:
 
 $H_0$: No hay relación entre la duración y score.
+
 $H_a$: Hay relación entre la duración y score.
 
 **Criterio de rechazo:**

@@ -366,7 +366,8 @@ familiares, comedia,documentales,drama, horror.</p>
 </div>
 <div id="anova" class="section level2">
 <h2><strong>Anova</strong></h2>
-<p><strong>Definición de variables:</strong></p>
+<p>var.test(Score ~ Genres,data = dataFrameH2) <strong>Definición de
+variables:</strong></p>
 <p><span class="math inline">\(\mu_1 =\)</span> “score de los productos
 audiovisuales del género acción y aventura”</p>
 <p><span class="math inline">\(\mu_2 =\)</span> “score de los productos
@@ -711,7 +712,18 @@ modelo de estimación:</p>
 <p><span class="math display">\[\widehat{y} =2.385943 +
 0.028803x\]</span></p>
 <p><strong>Interpretación <span class="math inline">\(\beta_0\)</span></strong></p>
-<p><span class="math inline">\(B_1= 2.385\)</span></p>
+<p><span class="math inline">\(B_0= 2.385\)</span></p>
+<p><span class="math inline">\(H_0\)</span>: <span class="math inline">\(B_0 = 0\)</span> El modelo pasa por el origen.</p>
+<p><span class="math inline">\(H_a\)</span>: <span class="math inline">\(B_0 ≠ 0\)</span> El modelo no pasa por el
+origen.</p>
+<p><strong>Criterio de rechazo:</strong></p>
+<p>Se rechaza <span class="math inline">\(H_o\)</span> Si: <span class="math inline">\(VrP&lt;\alpha\)</span></p>
+<p><span class="math inline">\(0.00000386&lt;0.05\)</span></p>
+<p>Con conociendo <span class="math inline">\(Vrp\)</span> tambien es
+posible determinar si el modelo tiene su intercepto en el origen. Para
+ello planteamos las hipotesis:</p>
+<p>Por lo que con un nivel de significancia del <span class="math inline">\(5%\)</span>, se rechaza <span class="math inline">\(H_0\)</span>. Por tanto el modelo no pasa por el
+origen.</p>
 <p>Si no hay un incremento en la duración de las películas el score en
 promedio sera 2,3.</p>
 <p><strong>Interpretación <span class="math inline">\(\beta_1\)</span></strong></p>
@@ -792,10 +804,10 @@ es confiable para hacer estimaciones.</p>
 <p><strong>Interpretación <span class="math inline">\(r\)</span></strong></p>
 <p><span class="math inline">\(r=0.4417563\)</span></p>
 <p>Ahora encontramos que el coeficiente de correlación de Pearson es
-<span class="math inline">\(0.4417563\)</span>. Por lo tanto podemos
-definir dos interpretaciones: Como el coeficiente de correlación es
-positivo decimos que la relación entre Duración y Score IMDb del género
-horror es directamente proporcional.</p>
+<span class="math inline">\(0.4417563\)</span>. Por lo tanto es posible
+definir las siguientes interpretaciones: Como el coeficiente de
+correlación es positivo decimos que la relación entre Duración y Score
+IMDb del género horror es directamente proporcional.</p>
 <p>La segunda interpretación es respecto a la siguiente tabla:</p>
 <table>
 <thead>
@@ -826,6 +838,19 @@ horror es directamente proporcional.</p>
 <p>De la tabla se infiere que la relación entre Duración y Score IMDb es
 MODERADA ya que el coeficiente de correlación <span class="math inline">\(r=0.4417563\)</span> se encuentra dentro del rango
 0.3 <span class="math inline">\(&lt;\)</span> <span class="math inline">\(r\)</span> <span class="math inline">\(\leq\)</span> 0.5 .</p>
+<p>Por ultimo, podemos determinar mediante el <span class="math inline">\(Vrp\)</span> del test de correlación de pearson si
+hay relacion entre la variable dependiente y la independiente, es decir
+si hay relacion entre la duración y el puntaje. Para ello se plantean
+las siguientes hipotesis:</p>
+<p><span class="math inline">\(H_0\)</span>: No hay relación entre la
+duración y score.</p>
+<p><span class="math inline">\(H_a\)</span>: Hay relación entre la
+duración y score.</p>
+<p><strong>Criterio de rechazo:</strong></p>
+<p>Se rechaza <span class="math inline">\(H_o\)</span> Si: <span class="math inline">\(VrP&lt;\alpha\)</span></p>
+<p><span class="math inline">\(0.0000000333&lt;0.05\)</span></p>
+<p>Por lo que con un nivel de significancia del <span class="math inline">\(5%\)</span>, se rechaza <span class="math inline">\(H_0\)</span>. Por tanto hay relación entre la
+duracion y el score.</p>
 <p><strong>Validación de supuestos</strong></p>
 <p>Para realizar la validación de los supuesto de normalidad y varianza
 constante (homocedasticidad) primero obtenemos los residuos en R:</p>
