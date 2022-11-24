@@ -217,6 +217,19 @@ $B_0= 2.385$
 
 Si no hay un incremento en la duración de las películas el score en promedio sera 2,3.
 
+Con conociendo $Vrp$ tambien es posible determinar si el modelo tiene su intercepto en el origen. Para ello planteamos las hipotesis:
+
+$H_0$: $B_0 = 0$ El modelo pasa por el origen.
+$H_$a: $B_0 ≠ 0$ El modelo no pasa por el origen.
+
+**Criterio de rechazo:**
+
+Se rechaza $H_o$ Si: $VrP<\alpha$
+
+$0.00000386<0.05$
+
+Por lo que con un nivel de significancia del $5%$, se rechaza $H_0$. Por tanto el modelo no pasa por el origen.
+
 **Interpretación $\beta_1$**
 
 $B_1=0.028803$
@@ -258,7 +271,7 @@ with(regresionData, cor.test(DURACION, SCORE, alternative="two.sided", method="p
 
 $r=0.4417563$
 
-Ahora encontramos que el coeficiente de correlación de Pearson  es $0.4417563$. Por lo tanto podemos definir dos interpretaciones:
+Ahora encontramos que el coeficiente de correlación de Pearson  es $0.4417563$. Por lo tanto es posible definir las siguientes interpretaciones:
 Como el coeficiente de correlación es positivo decimos que la relación entre Duración y Score IMDb del género horror es directamente proporcional.
 
 La segunda interpretación es respecto a la siguiente tabla:
@@ -273,6 +286,18 @@ La segunda interpretación es respecto a la siguiente tabla:
 De la tabla se infiere que la relación entre Duración y Score IMDb es MODERADA ya que el coeficiente de correlación $r=0.4417563$  se encuentra dentro del rango 0.3 $<$ $r$ $\leq$ 0.5 .
 
 
+Por ultimo, podemos determinar mediante el $Vrp$ del test de correlación de pearson si hay relacion entre la variable dependiente y la independiente, es decir si hay relacion entre la duración y el puntaje. Para ello se plantean las siguientes hipotesis:
+
+$H_0$: No hay relación entre la duración y score.
+$H_a$: Hay relación entre la duración y score.
+
+**Criterio de rechazo:**
+
+Se rechaza $H_o$ Si: $VrP<\alpha$
+
+$0.0000000333<0.05$
+
+Por lo que con un nivel de significancia del $5%$, se rechaza $H_0$. Por tanto hay relación entre la duracion y el score.
 
 **Validación de supuestos**
 
