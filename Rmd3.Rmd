@@ -173,7 +173,7 @@ Con un nivel de significancia de 5%, hay suficiente evidencia para rechazar $H_0
 
 ## **Regresión lineal**
 
-Se desea estudiar la relación que existe entre la duración y el score del producto audiovisual en la plataforma Netflix, específicamente para el género horror, para ello se selecciona una muestra de 118 productos audiovisuales del género documentales.
+Se desea estudiar la relación que existe entre la duración y el score del producto audiovisual en la plataforma Netflix, específicamente para el género horror, para ello se selecciona una muestra de 118 productos audiovisuales del género horror.
 
 **Definición modelo de regresión**
 
@@ -211,20 +211,25 @@ $\beta_q = 0.028803$
 
 $$\widehat{y} =2.385943 + 0.028803x$$
 
-**Interpretación $B_1$, $R^2$, $r$**
+**Interpretación $\beta_0$**
 
-**Interpretación $B_1$**
+$B_1= 2.385$
+
+Si no hay un incremento en la duración de las películas el score en promedio sera 2,3.
+
+**Interpretación $\beta_1$**
+
 $B_1=0.028803$
 
 Cuando la duración (en minutos) de las películas del género documental aumenta en una unidad (minutos), el score se incrementa en aproximadamente $0,028803$ en unidad. 
 
 **Interpretación $R^2$**
 
-$R^2=0.1894$
+$R^2=0.1951$
 
 Para $R^2$ tenemos **tres interpretaciones**, nuestra primera interpretación es respecto al porcentaje de $R^2$ y la segunda y tercera es respecto a la siguiente tabla:
 
-**Tabla R^2: Para interpretar coeficiente de determinación**
+**Tabla $R^2$: Para interpretar coeficiente de determinación**
 
 |**Coeficiente**| **Bondad de Ajuste**|**Para estimar**|
 |-------------------|-----------------------------|-----------------|
@@ -235,7 +240,7 @@ Para $R^2$ tenemos **tres interpretaciones**, nuestra primera interpretación es
 |0.9 $<$ $R^2$ $\leq$ 1.0 | EXCELENTE |ES CONFIABLE PARA HACER ESTIMACIONES|
 
 **Primera Interpretación**
-El modelo propuesto explica el 18.94% aproximadamente el 19% de la variabilidad del score que toma las películas del género documental.
+El modelo propuesto explica el 19.51% de la variabilidad del score que toma las películas del género documental.
 
 **Segunda Interpretación**
 El modelo propuesto presenta una bondad de ajuste considerada mala

@@ -666,7 +666,7 @@ las peliculas y el IMDb Score</strong></h2>
 <p>Se desea estudiar la relación que existe entre la duración y el score
 del producto audiovisual en la plataforma Netflix, específicamente para
 el género horror, para ello se selecciona una muestra de 118 productos
-audiovisuales del género documentales.</p>
+audiovisuales del género horror.</p>
 <p><strong>Definición modelo de regresión</strong></p>
 <p>Modelo regresión lineal simple: <span class="math display">\[\widehat{y} = \beta_0 + \beta_1 x\]</span>
 Donde</p>
@@ -710,21 +710,24 @@ modelo de estimación:</p>
 <p><span class="math inline">\(\beta_0 = 2.385943\)</span> <span class="math inline">\(\beta_q = 0.028803\)</span></p>
 <p><span class="math display">\[\widehat{y} =2.385943 +
 0.028803x\]</span></p>
-<p><strong>Interpretación <span class="math inline">\(B_1\)</span>,
-<span class="math inline">\(R^2\)</span>, <span class="math inline">\(r\)</span></strong></p>
-<p><strong>Interpretación <span class="math inline">\(B_1\)</span></strong> <span class="math inline">\(B_1=0.028803\)</span></p>
+<p><strong>Interpretación <span class="math inline">\(\beta_0\)</span></strong></p>
+<p><span class="math inline">\(B_1= 2.385\)</span></p>
+<p>Si no hay un incremento en la duración de las películas el score en
+promedio sera 2,3.</p>
+<p><strong>Interpretación <span class="math inline">\(\beta_1\)</span></strong></p>
+<p><span class="math inline">\(B_1=0.028803\)</span></p>
 <p>Cuando la duración (en minutos) de las películas del género
 documental aumenta en una unidad (minutos), el score se incrementa en
 aproximadamente <span class="math inline">\(0,028803\)</span> en
 unidad.</p>
 <p><strong>Interpretación <span class="math inline">\(R^2\)</span></strong></p>
-<p><span class="math inline">\(R^2=0.1894\)</span></p>
+<p><span class="math inline">\(R^2=0.1951\)</span></p>
 <p>Para <span class="math inline">\(R^2\)</span> tenemos <strong>tres
 interpretaciones</strong>, nuestra primera interpretación es respecto al
 porcentaje de <span class="math inline">\(R^2\)</span> y la segunda y
 tercera es respecto a la siguiente tabla:</p>
-<p><strong>Tabla R^2: Para interpretar coeficiente de
-determinación</strong></p>
+<p><strong>Tabla <span class="math inline">\(R^2\)</span>: Para
+interpretar coeficiente de determinación</strong></p>
 <table>
 <colgroup>
 <col width="29%" />
@@ -767,8 +770,8 @@ determinación</strong></p>
 </tbody>
 </table>
 <p><strong>Primera Interpretación</strong> El modelo propuesto explica
-el 18.94% aproximadamente el 19% de la variabilidad del score que toma
-las películas del género documental.</p>
+el 19.51% de la variabilidad del score que toma las películas del género
+documental.</p>
 <p><strong>Segunda Interpretación</strong> El modelo propuesto presenta
 una bondad de ajuste considerada mala</p>
 <p><strong>Tercera Interpretación</strong> Por lo tanto, este modelo no
