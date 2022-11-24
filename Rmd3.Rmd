@@ -213,7 +213,7 @@ $$\widehat{y} =2.385943 + 0.028803x$$
 
 **Interpretación $\beta_0$**
 
-$B_1= 2.385$
+$B_0= 2.385$
 
 Si no hay un incremento en la duración de las películas el score en promedio sera 2,3.
 
